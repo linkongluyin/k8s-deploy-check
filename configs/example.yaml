@@ -1,0 +1,25 @@
+kubernetes:
+  # 留空时优先使用集群内 ServiceAccount；本地运行使用默认 kubeconfig。
+  kubeconfig: ""
+  context: ""
+  namespace: uat
+  deployment: catalog
+
+check:
+  timeout: 3m
+  interval: 5s
+  maxRestarts: 3
+
+health:
+  # 留空则跳过 HTTP 健康检查。
+  url: http://catalog.uat.svc.cluster.local:8080/actuator/health
+  timeout: 10s
+  retries: 3
+  retryInterval: 5s
+
+feishu:
+  # 留空则不推送飞书告警。
+  webhook: ""
+  # 机器人安全设置选择“签名校验”时填写，留空则不签名。
+  secret: ""
+  timeout: 10s

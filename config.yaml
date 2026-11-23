@@ -1,0 +1,24 @@
+kubernetes:
+  # 留空时优先使用集群内 ServiceAccount；本地运行使用默认 kubeconfig。
+  kubeconfig: ""
+  context: ""
+  namespace: uat
+  deployment: catalog
+
+check:
+  timeout: 3m
+  interval: 5s
+  maxRestarts: 3
+
+health:
+  # 留空则跳过 HTTP 健康检查。
+  url: ""
+  timeout: 10s
+  retries: 3
+  retryInterval: 5s
+
+feishu:
+  # 留空则不推送飞书告警；填写 webhook 后成功与失败均推送交互卡片。
+  webhook: "https://open.feishu.cn/open-apis/bot/v2/hook/18c45e7b-822a-48c0-88c5-7186897f9fa2"
+  secret: ""
+  timeout: 10s
